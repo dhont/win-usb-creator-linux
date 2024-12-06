@@ -66,6 +66,11 @@ fi
 echo "Checking if the USB is bootable..."
 sudo bootinfoscript
 
-echo "Check the RESULTS.txt file for details."
+# Check the RESULTS.txt file for bootable status
+if grep -q " => syslinux" RESULTS.txt || grep -q " => grub" RESULTS.txt; then
+    echo "The USB drive is bootable."
+else
+    echo "The USB drive is not bootable. Please check the process or try again."
+fi
 
 echo "Windows 11 ISO has been written to the USB drive successfully."

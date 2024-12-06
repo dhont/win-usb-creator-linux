@@ -35,15 +35,21 @@ This repository contains a script to download on a Linux machine and write the W
 
 3. Update the script with the Windows 11 ISO download link you obtained in the prerequisites section.
 
-4. Run the script:
+4. List devices to identify the correct USB device path:
+   ```bash
+   sudo fdisk -l
+   ```
+
+5. Run the script with `sudo`:
    ```bash
    sudo ./create_windows_usb.sh
    ```
 
-5. Enter the USB device path (e.g., `/dev/sdX`) when prompted.
+6. Enter the USB device path (e.g., `/dev/sdX`) when prompted.
 
 ## Notes
 - **Important:** The download link for the Windows 11 ISO is only valid for 24 hours. You will need to update the script with the new URL if the link expires.
 - Make sure to back up any important data on your USB drive before running the script, as this process will erase all data on the drive.
 - The script checks if the ISO file is already downloaded. If it's smaller than 10 MB, it will stop and prompt you to check the URL.
 - The script now includes a check to see if the USB stick is bootable after the `dd` process. If `boot-info` is not installed, the script will prompt the user to install it or skip the boot check.
+- The script will verify if the USB drive is bootable by analyzing the output of `bootinfoscript`.
