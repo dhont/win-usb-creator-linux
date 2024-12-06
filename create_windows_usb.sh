@@ -27,13 +27,9 @@ echo "Unmounting the USB device..."
 sudo umount ${USB_DEVICE}*
 
 # Check that the selected device is not the root filesystem or main hard drive
-if mount | grep "on / type " > /dev/null && [[ $USB_DEVICE == $(mount | grep "on / type " | awk '{print $1}') ]]; then
-    echo "Error: The selected device is the root filesystem. Exiting..."
-    exit 1
-fi
-
-if mount | grep "on / type " > /dev/null && [[ $USB_DEVICE == "/dev/sda" ]]; then
-    echo "Error: The selected device is the main hard drive. Exiting..."
+ROOT_DEV=$(lsblk -o MOUNTPOINT,PKNAME | grep " /$" | awk '{print $2}')
+if [ "${USB_DEVICE#/dev/}" == "$ROOT_DEV" ]; then
+    echo "Error: The selected device is the root filesystem or part of the main hard drive. Exiting..."
     exit 1
 fi
 
