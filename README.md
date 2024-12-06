@@ -11,8 +11,8 @@ This repository contains a script to download on a Linux machine and write the W
 ## Prerequisites
 - Ubuntu or any Linux-based system
 - `wget` installed: `sudo apt-get install wget`
-- `parted` installed: `sudo apt-get install parted`
-- `boot-info` installed: `sudo apt-get install boot-info`
+- **woeusb** installed: `sudo add-apt-repository ppa:tomtomtom/woeusb && sudo apt update && sudo apt install woeusb`
+  - The script will check for `woeusb` and prompt to install if it's not already installed.
 - **Download the Windows 11 ISO:**
   1. Visit the [Windows 11 Download Page](https://www.microsoft.com/en-us/software-download/windows11).
   2. Scroll down to the section titled "Download Windows 11 Disk Image (ISO)".
@@ -50,6 +50,4 @@ This repository contains a script to download on a Linux machine and write the W
 ## Notes
 - **Important:** The download link for the Windows 11 ISO is only valid for 24 hours. You will need to update the script with the new URL if the link expires.
 - Make sure to back up any important data on your USB drive before running the script, as this process will erase all data on the drive.
-- The script checks if the ISO file is already downloaded. If it's smaller than 10 MB, it will stop and prompt you to check the URL.
-- The script now includes a check to see if the USB stick is bootable after the `dd` process. If `boot-info` is not installed, the script will prompt the user to install it or skip the boot check.
-- The script will verify if the USB drive is bootable by analyzing the output of `bootinfoscript`.
+- The script uses `woeusb` to create the bootable USB drive and checks if it is installed. If not, it will prompt to install or exit.
