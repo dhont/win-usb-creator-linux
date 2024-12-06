@@ -1,6 +1,3 @@
-
-### Script:
-```bash
 #!/bin/bash
 
 # Define the URL for the Windows 11 ISO and the output file path
