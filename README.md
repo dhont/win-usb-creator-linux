@@ -1,3 +1,6 @@
+Sure! Here's the complete `README.md` file in raw format:
+
+```markdown
 # Windows USB Creator for Linux
 
 This repository contains a script to download on a Linux machine and write the Windows 11 ISO to a USB drive, making it bootable for installation. This script has been tested on Ubuntu Server LTS 22.04.
@@ -12,6 +15,7 @@ This repository contains a script to download on a Linux machine and write the W
 - Ubuntu or any Linux-based system
 - `wget` installed: `sudo apt-get install wget`
 - `parted` installed: `sudo apt-get install parted`
+- `boot-info` installed: `sudo apt-get install boot-info`
 - **Download the Windows 11 ISO:**
   1. Visit the [Windows 11 Download Page](https://www.microsoft.com/en-us/software-download/windows11).
   2. Scroll down to the section titled "Download Windows 11 Disk Image (ISO)".
@@ -45,6 +49,7 @@ This repository contains a script to download on a Linux machine and write the W
 - **Important:** The download link for the Windows 11 ISO is only valid for 24 hours. You will need to update the script with the new URL if the link expires.
 - Make sure to back up any important data on your USB drive before running the script, as this process will erase all data on the drive.
 - The script checks if the ISO file is already downloaded. If it's smaller than 10 MB, it will stop and prompt you to check the URL.
+- The script now includes a check to see if the USB stick is bootable after the `dd` process. If `boot-info` is not installed, the script will prompt the user to install it or skip the boot check.
 ```
 
-Feel free to copy and use this for your repository. If you need any further assistance, just let me know! 😊
+Feel free to copy and use this for your repository. Let me know if you have any other questions or need further assistance! 😊
